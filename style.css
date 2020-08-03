@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+.col-3 {
+  padding-right: 0px;
+}
+
+.col-8 {
+  padding-right: 0px;
+}
+
+#cities {
+  display: block;
+  height: 50vh;
+}
+
+#fiveDay {
+  display: block;
+  height: 50%;
+}
+
+.card {
+  display: block;
+  height: 100%;
+}
+
+.cityBtns {
+  font-size: xx-large;
+  height: 20%;
+  background-color: rgb(245, 245, 245);
+}
+
+.cityBtns:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.fiveDayCard {
+  display: inline-block;
+  width: 20%;
+}
+
+.fiveDay {
+  font-size: small;
+}
+
+.cityCard {
+  font-size: 300%;
+}
+
+.cityCard-title {
+  font-size: 350%;
+}

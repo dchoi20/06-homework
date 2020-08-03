@@ -2,8 +2,14 @@
 let $citySearch = $("#citySearch");
 // let $cityList = $("#cityList");
 
+let $cityName = $("#cityName");
+let $cityTemperature = $("#cityTemperature");
+let $cityHumidity = $("#cityHumidity");
+let $cityWind = $("#cityWind");
+
 function cityNameSearch() {
   let cityName = $("#citySearch").val();
+  console.log(cityName);
 
   let queryURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -15,33 +21,28 @@ function cityNameSearch() {
     method: "GET",
   }).then(function (response) {
     console.log(response);
-    $(`<div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">${response.name}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Temperature: ${(
+    $(`<div id="currentCityCard" class="card">
+        <div>
+          <h5 class="card-title cityCard-title">${response.name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted cityCard">Temperature: ${(
             (response.main.temp - 273.15) * 1.8 +
             32
           ).toFixed(2)}</h6>
-          <h6 class="card-subtitle mb-2 text-muted">Humidity: ${
+          <h6 class="card-subtitle mb-2 text-muted cityCard">Humidity: ${
             response.main.humidity
           }</>
-          <h6 class="card-subtitle mb-2 text-muted">Windspeed: ${
+          <h6 class="card-subtitle mb-2 text-muted cityCard">Windspeed: ${
             response.wind.speed
           }</h6>
         </div>
       </div>`).appendTo("#cities");
   });
-  $("#citySearch").val("");
+  // $("#citySearch").val("");
 }
 
-// NEW YORK TIME API
-// https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=GcVcv3ibf39BiRgpffCcppBauYG8F9da
+$("#cityBtn").on("click", cityNameSearch);
 
 $("#citySearchBtn").on("click", function () {
   event.preventDefault();
-  $(`<li><button>${$citySearch.val()}</button></li>`).appendTo("#cityBtn");
-
-  // cityNameSearch();
+  $(`<p class="cityBtns">${$citySearch.val()}</p>`).appendTo("#cityBtn");
 });
-
-$("#cityBtn").on("click", cityNameSearch);
