@@ -32,7 +32,7 @@ function fiveDayWeather() {
   });
   //   $("#citySearch").val("");
 }
-$("#cityBtn").on("click", fiveDayWeather);
+$("#cityList").on("click", fiveDayWeather);
 
 // $("#citySearchBtn").on("click", function () {
 //   event.preventDefault();

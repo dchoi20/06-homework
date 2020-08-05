@@ -6,6 +6,7 @@ let $cityName = $("#cityName");
 let $cityTemperature = $("#cityTemperature");
 let $cityHumidity = $("#cityHumidity");
 let $cityWind = $("#cityWind");
+let cityArray = [];
 
 function cityNameSearch() {
   let cityName = $("#citySearch").val();
@@ -40,9 +41,23 @@ function cityNameSearch() {
   // $("#citySearch").val("");
 }
 
-$("#cityBtn").on("click", cityNameSearch);
+$("#cityList").on("click", cityNameSearch);
 
 $("#citySearchBtn").on("click", function () {
   event.preventDefault();
-  $(`<p class="cityBtns">${$citySearch.val()}</p>`).appendTo("#cityBtn");
+  renderList();
 });
+
+function renderList() {
+  $("#cityList").empty();
+  cityArray.push($citySearch.val());
+
+  for (let i = 0; i < cityArray.length; i++) {
+    localStorage.setItem("cityName", cityArray);
+    $(`<p class="cityBtns">${cityArray[i]}</p>`).appendTo("#cityList");
+  }
+}
+
+// localStorage.setItem("cityName", JSON.stringify(cityArray));
+// let cityNameStore = JSON.parse(localStorage.getItem("cityName"));
+for (let i = 0; i < localStorage.length; i++) {}
